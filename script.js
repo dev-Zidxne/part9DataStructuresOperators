@@ -63,7 +63,7 @@ console.log('-------------OR-----------');
 console.log(3 || 'Jonas');
 console.log('' || 'Jonas');
 console.log(true || 0);
-console.log(null || undefined);
+console.log(undefined || null);
 
 console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 
