@@ -1,88 +1,162 @@
 'use strict';
 
-// const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-// const openingHours = {
-//   [weekdays[3]]: {
-//     open: 12,
-//     close: 22,
-//   },
-//   [weekdays[4]]: {
-//     open: 11,
-//     close: 23,
-//   },
-//   [weekdays[5]]: {
-//     open: 0, // Open 24 hours
-//     close: 24,
-//   },
-// };
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
 
-// //Data needed for a later exercise
-// const flights =
-//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+//Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// // Data needed for first part of the section
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-//   openingHours,
-//   // ES6 advanced object literals
+// Data needed for first part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours,
+  // ES6 advanced object literals
 
-//   order(starterIndex, mainIndex) {
-//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
-//   orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
-//     console.log(
-//       `Order received! ${
-//         (this.starterMenu[starterIndex], this.mainMenu[mainIndex])
-//       } and ${
-//         this.mainMenu[mainIndex]
-//       } will be delivered to ${address} at ${time}`
-//     );
-//   },
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+    console.log(
+      `Order received! ${
+        (this.starterMenu[starterIndex], this.mainMenu[mainIndex])
+      } and ${
+        this.mainMenu[mainIndex]
+      } will be delivered to ${address} at ${time}`
+    );
+  },
 
-//   orderPasta(ing1, ing2, ing3) {
-//     console.log(
-//       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-//     );
-//   },
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 
-//   orderPizza: function (mainIngredient, ...otherIngredients) {
-//     console.log(mainIngredient);
-//     console.log(otherIngredients);
-//   },
-// };
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+};
 
-// // Looping Objects: Object Keys, Values, and Entries
+/*
+//////////////////////////////////////
+// Maps: Fundamentals
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
 
-// const properties = Object.keys(openingHours);
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Poprtugal'));
 
-// console.log(properties);
-// let openStr = `We are open on ${properties.length} days:`;
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed :(');
 
-// for (const day of properties) {
-//   openStr += `${day},`;
-// }
-// console.log(openStr);
+console.log(rest.get('name'));
+console.log(rest.get(1));
 
-// // Property VALUES
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
 
-// const values = Object.values(openingHours);
-// console.log(values);
+console.log(rest.has('categories'));
+rest.delete(2);
+// rest.clear();
+const arr = [1, 2];
+rest.set(arr, 'Test');
+rest.set(document.querySelector('h1'), 'Heading');
 
-// const entries = Object.entries(openingHours);
-// console.log(entries);
+console.log(rest);
+console.log(rest.size);
 
-// for (const [key, { open, close }] of entries) {
-//   console.log(`On ${key} we open at ${open} and close at ${close}`);
-// }
+console.log(rest.get(arr));
 
-///////////////////////////////////////
-// Coding Challenge #2
 
-/* 
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+
+console.log(ordersSet);
+
+console.log(new Set('Zidane'));
+
+console.log(ordersSet.size);
+
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('zidaneinnis').size);
+
+// Looping Objects: Object Keys, Values, and Entries
+
+const properties = Object.keys(openingHours);
+
+console.log(properties);
+let openStr = `We are open on ${properties.length} days:`;
+
+for (const day of properties) {
+  openStr += `${day},`;
+}
+console.log(openStr);
+
+// Property VALUES
+
+const values = Object.values(openingHours);
+console.log(values);
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
+/////////////////////////////////////
+//Coding Challenge #2
+
+ 
 Let's continue with our football betting app!
 
 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
@@ -103,65 +177,65 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 GOOD LUCK 😀
 */
 
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
-// 1.
-for (const [i, player] of game.scored.entries())
-  console.log(`Goal ${i + 1}: ${player}`);
+// // 1.
+// for (const [i, player] of game.scored.entries())
+//   console.log(`Goal ${i + 1}: ${player}`);
 
-// 2.
+// // 2.
 
-const odds = Object.values(game.odds);
+// const odds = Object.values(game.odds);
 
-let average = 0;
-for (const odd of odds) average += odd;
-average /= odds.length;
+// let average = 0;
+// for (const odd of odds) average += odd;
+// average /= odds.length;
 
-console.log(average);
+// console.log(average);
 
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr} : ${odd}`);
-}
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr} : ${odd}`);
+// }
 
 // console.log(`Odd of victory ${game.team1}: ${game.odds.team1}
 // Odd of Draw: ${game.odds.x}
