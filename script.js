@@ -55,8 +55,71 @@ const restaurant = {
   },
 };
 
-//Working with strings - Part 1
+const airline = 'TAP Air Portugal';
 
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//Fix capitalization in name
+
+const passenger = 'zIDaNE'; // Zidane
+const passengerLower = passenger.toLowerCase();
+
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// Comparing email
+const email = 'hello@zidane.io';
+const loginEmail = '  Hello@Zidane.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// Replacing parts of strings
+const priceGB = '$288,97JMD';
+const priceUSD = priceGB.replace('JMD', 'USD').replace(',', '.');
+console.log(priceUSD);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+
+console.log(announcement.replaceAll('door', 'gate'));
+// console.log(announcement.replace(/door/g, 'gate'));
+// this is one otther way to change all the appearance of one one in a string by place the word into /   / slashes then adding 'g' to end which stands for global eg: /door/g
+
+//Working With Strings - Part 2
+
+// Booleans
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Airb'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family');
+}
+
+//Practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and a camera');
+checkBaggage('GOt some snacks and agun for protection');
+/*
+
+//Working with strings - Part 1
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
 
@@ -97,8 +160,8 @@ console.log(typeof new String('Zidane').slice(1));
 
 ////////////////////////////////
 // Coding Challenge #3
-
-/* 
+/*
+ 
 Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
 
 1. Create an array 'events' of the different game events that happened (no duplicates)
